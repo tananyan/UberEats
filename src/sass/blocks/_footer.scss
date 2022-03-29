@@ -1,6 +1,6 @@
 .footer {
   padding: 56px 0 38px;
-  background-color: #262626;
+  background-color: #252525;
   &__logo {
     width: 197px;
     height: 20px;
@@ -22,13 +22,29 @@
 
   &__wrapper {
     margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
   &__left-column {
     height: 140px;
   }
-  &__center-column {
-  }
+  &__center-column,
   &__right-column {
+    display: flex;
+    flex-direction: column;
+    a {
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15px;
+      color: #ffffff;
+    }
+    a:hover {
+      color: #49a144;
+    }
+    div + div {
+      margin-top: 23px;
+    }
   }
 
   &__lang {
@@ -105,6 +121,37 @@
     margin-top: 17px;
     &-item {
       text-decoration: none;
+      margin-right: 5px;
+      &:hover {
+        svg {
+          path {
+            fill: #49a144;
+          }
+        }
+      }
+    }
+  }
+
+  &__apps {
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+    margin-top: 40px;
+  }
+
+  &__p-links {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    a {
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 13px;
+      color: #ffffff;
+    }
+    a:hover {
+      color: #49a144;
     }
   }
 }
