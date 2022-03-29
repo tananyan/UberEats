@@ -31,6 +31,12 @@
     row-gap: 17px;
   }
   &__item {
+    background: linear-gradient(#e0e0e0, 25%, white);
+    cursor: pointer;
+    transition: 0.5s all;
+    &:hover {
+      transform: scale(0.97);
+    }
     &-icon {
       height: 256px;
       img {
