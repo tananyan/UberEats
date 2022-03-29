@@ -1,0 +1,46 @@
+.rest-info {
+  min-height: 364px;
+  padding: 80px 81px;
+  background: url("../img/photo.png") no-repeat center (center/cover);
+  &__wrapper {
+    padding: 38px 29px 38px 38px;
+    width: 389px;
+    height: 204px;
+    background: #ffffff;
+    box-shadow: 0px 0px 16px rgba(117, 117, 117, 0.2);
+    border-radius: 2px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__title {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px;
+    color: #1d1d1d;
+  }
+  &__mini-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__cost {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #626262;
+  }
+  &__wait {
+    width: 100px;
+    height: 32px;
+    background: #262626;
+    border-radius: 16px;
+
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+  }
+}

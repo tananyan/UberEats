@@ -1,16 +1,26 @@
-const gulp = require("gulp");
-const browserSync = require("browser-sync");
-const sass = require("gulp-sass")(require("sass"));
-const cleanCSS = require("gulp-clean-css");
-const autoprefixer = require("gulp-autoprefixer");
-const rename = require("gulp-rename");
-// const image = require("gulp-image");
-const htmlmin = require("gulp-htmlmin");
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+
+// import sass from 'gulp-sass';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sass = gulpSass(dartSass);
+
+import cleanCSS from 'gulp-clean-css';
+import autoprefixer from 'gulp-autoprefixer';
+import rename from 'gulp-rename';
+import image from 'gulp-image';
+import htmlmin from 'gulp-htmlmin';
+import webphtml from 'gulp-webp-html-nosvg';
+import cwebp from 'gulp-cwebp';
 
 gulp.task("server", function () {
   browserSync({
     server: {
       baseDir: "dist",
+    },
+    serveStaticOptions: {
+      extensions: ["html"],
     },
   });
 
@@ -35,11 +45,13 @@ gulp.task("watch", function () {
   gulp.watch("src/fonts/**/*").on("all", gulp.parallel("fonts"));
   gulp.watch("src/icons/**/*").on("all", gulp.parallel("icons"));
   gulp.watch("src/img/**/*").on("all", gulp.parallel("images"));
+  gulp.watch("src/img/**/*").on("all", gulp.parallel("cwebp"));
 });
 
 gulp.task("html", function () {
   return gulp
     .src("src/*.html")
+    .pipe(webphtml())
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest("dist/"));
 });
@@ -61,6 +73,7 @@ gulp.task("fonts", function () {
 gulp.task("icons", function () {
   return gulp
     .src("src/icons/**/*")
+    .pipe(image())
     .pipe(gulp.dest("dist/icons"))
     .pipe(browserSync.stream());
 });
@@ -68,7 +81,15 @@ gulp.task("icons", function () {
 gulp.task("images", function () {
   return gulp
     .src("src/img/**/*")
-    // .pipe(image())
+    .pipe(image())
+    .pipe(gulp.dest("dist/img"))
+    .pipe(browserSync.stream());
+});
+
+gulp.task("cwebp", function () {
+  return gulp
+    .src("src/img/**/*")
+    .pipe(cwebp())
     .pipe(gulp.dest("dist/img"))
     .pipe(browserSync.stream());
 });
@@ -83,6 +104,7 @@ gulp.task(
     "fonts",
     "icons",
     "html",
-    "images"
+    "images",
+    "cwebp"
   )
 );
