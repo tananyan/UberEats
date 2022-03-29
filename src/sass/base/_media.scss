@@ -32,15 +32,12 @@
     &__wrapper {
       grid-template-columns: repeat(1, 1fr);
     }
-    &__left-column {
-    }
     &__center-column {
       margin-top: 39px;
     }
     &__right-column {
       margin-top: 23px;
     }
-
     &__p-links {
       grid-template-columns: repeat(1, 1fr);
       div + div {
