@@ -1,0 +1,34 @@
+// Адаптив
+// >992px .container{ width: 956px }
+
+//769px-992px
+@media (max-width: 992px) {
+  .container {
+    width: 752px;
+  }
+
+  .rests {
+    padding: 32px 0 48px;
+    &__tile {
+      grid-template-columns: repeat(2, 1fr);
+      // grid-auto-rows: minmax(370px, auto);
+      column-gap: 12px;
+    }
+  }
+}
+
+//577px-768px
+@media (max-width: 768px) {
+  .container {
+    width: 308px;
+  }
+}
+
+//320px-576px
+// @media (max-width: 576px) {
+//   .container {
+//     width: 308px;
+//   }
+// }
+
+// 308px - 752px - 956px
